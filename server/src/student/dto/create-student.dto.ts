@@ -1,11 +1,13 @@
-import { IsEmail, IsEnum, IsOptional, IsString, IsDateString, IsInt } from 'class-validator';
+import { IsEmail, IsEnum, IsOptional, IsString, IsDateString, IsInt, IsNotEmpty } from 'class-validator';
 import { Gender, Status } from '../student.entity';
 
 export class CreateStudentDto {
   @IsString()
+  @IsNotEmpty()
   firstName: string;
 
   @IsEmail()
+  @IsNotEmpty()
   email: string;
 
   @IsOptional()
@@ -21,6 +23,7 @@ export class CreateStudentDto {
   dateOfBirth?: string;
 
   @IsString()
+  @IsNotEmpty()
   matricNumber: string;
 
   @IsString()
