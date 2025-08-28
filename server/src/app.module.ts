@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentModule } from './student/student.module';
-import { Student } from './student/student.entity';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -21,12 +21,13 @@ import { Student } from './student/student.entity';
         username: configService.get<string>('DB_USERNAME'),
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [Student],
+        entities: [__dirname + '/entities/*.entity{.ts,.js}'],
         autoLoadEntities: true,
         synchronize: true,
       }),
     }),
     StudentModule,
+    AdminModule
   ],
     controllers: [AppController],
     providers: [AppService],

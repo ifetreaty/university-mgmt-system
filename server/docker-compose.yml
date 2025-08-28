@@ -6,9 +6,10 @@ services:
       - '5432:5432'
     environment:
       POSTGRES_DB: ums_db
-      POSTGRES_STUDENT: ums_student
+      POSTGRES_USER: ums_student
       POSTGRES_PASSWORD: ums_password
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
 volumes:
   postgres_data:
