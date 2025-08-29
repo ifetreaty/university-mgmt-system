@@ -1,21 +1,11 @@
+import { Gender } from 'src/enums/gender.enum';
+import { Status } from 'src/enums/status.enum';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-
-export enum Gender {
-  MALE = 'male',
-  FEMALE = 'female',
-  OTHER = 'other',
-}
-
-export enum Status {
-  ACTIVE = 'active',
-  INACTIVE = 'inactive',
-  GRADUATED = 'graduated',
-}
 
 @Entity()
 export class Student {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ length: 50 })
   firstName: string;
@@ -50,3 +40,7 @@ export class Student {
   @Column({ nullable: true })
   roleId: number;
 }
+
+// not done yet. We need to create faculty and department and tie a student to both. 
+
+// read upn on how to tie relationships (decorators to show relationships)

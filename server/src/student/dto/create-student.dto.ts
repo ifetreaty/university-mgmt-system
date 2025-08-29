@@ -1,5 +1,6 @@
 import { IsEmail, IsEnum, IsOptional, IsString, IsDateString, IsInt, IsNotEmpty } from 'class-validator';
-import { Gender, Status } from '../student.entity';
+import { Gender } from 'src/enums/gender.enum';
+import { Status } from 'src/enums/status.enum';
 
 export class CreateStudentDto {
   @IsString()

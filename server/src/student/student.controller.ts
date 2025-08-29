@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { CreateStudentDto } from './dto/create-student.dto';
-import { Student } from './student.entity';
+import { Student } from '../entities/student.entity';
 
 @Controller('students')
 export class StudentController {
