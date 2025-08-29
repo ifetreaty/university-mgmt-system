@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, NotFoundException } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { Admin } from '../entities/admin.entity';
@@ -18,8 +18,14 @@ export class AdminController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Admin | null> {
-    return this.adminService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<Admin> {
+    const admin = await this.adminService.findOne(id);
+
+    if (!admin) {
+      throw new NotFoundException(`Admin with id ${id} not found`);
+    }
+
+    return admin;
   }
 }
 

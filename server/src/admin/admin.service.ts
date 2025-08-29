@@ -29,6 +29,6 @@ export class AdminService {
   }
 
   findOne(id: string): Promise<Admin | null> {
-    return this.adminRepository.findOneBy({ id });
+    return this.adminRepository.findOne({ where: { id } });
   }
 }
