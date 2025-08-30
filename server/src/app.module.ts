@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentModule } from './student/student.module';
 import { AdminModule } from './admin/admin.module';
+import { FacultyModule } from './faculty/faculty.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { AdminModule } from './admin/admin.module';
       }),
     }),
     StudentModule,
-    AdminModule
+    AdminModule,
+    FacultyModule
   ],
     controllers: [AppController],
     providers: [AppService],

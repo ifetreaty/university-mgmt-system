@@ -17,3 +17,7 @@ export class StudentController {
     return this.studentService.getAllStudents();
   }
 }
+
+
+// faculty endpoints - 
+// department endpoints - 
