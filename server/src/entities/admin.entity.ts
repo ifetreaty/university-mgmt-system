@@ -1,5 +1,6 @@
 import { Role } from 'src/enums/role.enum';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Faculty } from './faculty.entity';
 
 @Entity()
 export class Admin {
@@ -30,4 +31,7 @@ export class Admin {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(() => Faculty, (faculty) => faculty.admins, { onDelete: 'SET NULL' })
+  faculty: Faculty;
 }

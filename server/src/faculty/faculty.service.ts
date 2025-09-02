@@ -17,6 +17,6 @@ export class FacultyService {
   }
 
   async getAllFaculty(): Promise<Faculty[]> {
-    return this.facultyRepository.find();
+    return this.facultyRepository.find({ relations: ['admins'] });
   }
 }
