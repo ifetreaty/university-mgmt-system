@@ -24,11 +24,11 @@ export class FacultyService {
   async getOneFaculty(id: string): Promise<Faculty> {
     const faculty = await this.facultyRepository.findOne({
       where: { id },
-      relations: ['admins'],
+      relations: ['departments', 'admins'],
     });
 
     if (!faculty) {
-      throw new NotFoundException(`Faculty with id {id} not found`);
+      throw new NotFoundException(`Faculty with ID {id} not found`);
     }
 
     return faculty;
