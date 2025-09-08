@@ -16,17 +16,10 @@ export class DepartmentService {
   ) {}
 
   async createDepartment(dto: CreateDepartmentDto): Promise<Department> {
-    const faculty = await this.facultyRepository.findOne({
-      where: { id: dto.facultyId },
-    });
-    if (!faculty) {
-      throw new NotFoundException('Faculty not found');
-    }
-
     const department = this.departmentRepository.create({
       name: dto.name,
       description: dto.description,
-      faculty,
+      faculty: { id: dto.facultyId } as Faculty,
     });
 
     return this.departmentRepository.save(department);
