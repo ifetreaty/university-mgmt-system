@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Admin } from './admin.entity';
+import { Department } from './department.entity';
 
 @Entity()
 export class Faculty {
@@ -14,4 +15,9 @@ export class Faculty {
 
   @OneToMany(() => Admin, (admin) => admin.faculty)
   admins: Admin[];
+
+  @OneToMany(() => Department, (department) => department.faculty, {
+    cascade: true,
+  })
+  departments: Department[];
 }
